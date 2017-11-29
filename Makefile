@@ -24,7 +24,7 @@ dist/%.js: src/%.js src/common/* src/%/*
 
 dist/%.min.js: dist/%.js
 	echo '/* $(shell echo $* | tr a-z A-Z) v$(shell jq -r .version -- package.json) https://github.com/curiousdannii/ifvms.js */' > $@
-	babili dist/$*.js >> $@
+	babel-minify dist/$*.js >> $@
 
 lint:
 	eslint --ignore-path .gitignore .
